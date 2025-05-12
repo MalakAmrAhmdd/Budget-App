@@ -5,6 +5,7 @@ import com.mailjet.client.MailjetClient;
 import com.mailjet.client.MailjetRequest;
 import com.mailjet.client.MailjetResponse;
 import com.mailjet.client.errors.MailjetException;
+import com.mailjet.client.errors.MailjetSocketTimeoutException; // Fix incorrect import
 import com.mailjet.client.resource.Emailv31;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -14,7 +15,7 @@ import java.security.SecureRandom;
 public class OTPManager {
     private static final int OTP_LENGTH = 6;
     private final SecureRandom random = new SecureRandom();
-    private String storedOTP;
+    private volatile String storedOTP; // Ensure thread-safety
 
     public String generateOTP() {
         StringBuilder otp = new StringBuilder();
@@ -65,7 +66,7 @@ public class OTPManager {
             } else {
                 System.out.println("Failed to send OTP. Response: " + response.getData());
             }
-        } catch (MailjetException e) {
+        } catch (MailjetException | MailjetSocketTimeoutException e) { // Fix exception handling
             e.printStackTrace();
         }
     }

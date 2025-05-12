@@ -1,26 +1,41 @@
 package User_Management;
 
-import java.util.List;
-
 public class User {
     private int userId;
+    private String name;
     private String email;
     private String username;
     private String password;
     private String phoneNumber;
 
-    private List<Income> incomes;
-    private List<Expense> expenses;
-    private List<Goal> goals;
-    private List<Saving> savings;
-    private List<Debt> debts;
+    // Default constructor required for Jackson deserialization
+    public User() {
+    }
 
+    public User(int userId, String name, String email, String username, String password, String phoneNumber) {
+        this.userId = userId;
+        this.name = name;
+        this.email = email;
+        this.username = username;
+        this.password = password;
+        this.phoneNumber = phoneNumber;
+    }
+
+    // Getters and setters
     public int getUserId() {
         return userId;
     }
 
     public void setUserId(int userId) {
         this.userId = userId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getEmail() {
@@ -36,8 +51,9 @@ public class User {
     }
 
     public void setUsername(String username) {
-
+        this.username = username;
     }
+
     public String getPassword() {
         return password;
     }
@@ -54,56 +70,14 @@ public class User {
         this.phoneNumber = phoneNumber;
     }
 
-    public List<Income> getIncomes() {
-        return incomes;
-    }
-
-    public void setIncomes(List<Income> incomes) {
-        this.incomes = incomes;
-    }
-
-    public List<Expense> getExpenses() {
-        return expenses;
-    }
-
-
-    public void setExpenses(List<Expense> expenses) {
-        this.expenses = expenses;
-    }
-
-    public List<Goal> getGoals() {
-        return goals;
-    }
-
-    public void setGoals(List<Goal> goals) {
-        this.goals = goals;
-    }
-
-    public List<Saving> getSavings() {
-        return savings;
-    }
-
-    public void setSavings(List<Saving> savings) {
-        this.savings = savings;
-    }
-
-    public List<Debt> getDebts() {
-        return debts;
-    }
-
-    public void setDebts(List<Debt> debts) {
-        this.debts = debts;
-    }
-
     public void updateProfile(String email, String username, String phoneNumber) {
-        // Logic for updating profile
-        if(email!= null && !email.isEmpty()) {
+        if (email != null && !email.isEmpty()) {
             this.email = email;
         }
-        if(username!= null && !username.isEmpty()) {
+        if (username != null && !username.isEmpty()) {
             this.username = username;
         }
-        if(phoneNumber!= null && !phoneNumber.isEmpty()) {
+        if (phoneNumber != null && !phoneNumber.isEmpty()) {
             this.phoneNumber = phoneNumber;
         }
         System.out.println("Profile updated successfully!");
