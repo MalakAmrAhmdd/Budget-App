@@ -1,4 +1,5 @@
 package User_Management;
+import java.util.List;
 
 public class User {
     private int userId;
@@ -7,6 +8,13 @@ public class User {
     private String username;
     private String password;
     private String phoneNumber;
+
+    private List<Income> incomes;
+    private List<Expense> expenses;
+    private List<Goal> goals;
+    private List<Saving> savings;
+    private List<Debt> debts;
+
 
     // Default constructor required for Jackson deserialization
     public User() {
