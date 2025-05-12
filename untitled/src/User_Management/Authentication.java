@@ -1,8 +1,6 @@
 package User_Management;
 
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -11,22 +9,22 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class Authentication {
     private static final AtomicInteger ID_COUNTER = new AtomicInteger(1);
-    private static JSONObject currentUser = null; // Stores the currently logged-in user
+    private static User currentUser = null; // Stores the currently logged-in user
 
     public boolean login(String username, String password) {
-        JSONParser parser = new JSONParser();
+        ObjectMapper objectMapper = new ObjectMapper();
 
         try (BufferedReader reader = new BufferedReader(new FileReader("users.json"))) {
             String line;
             while ((line = reader.readLine()) != null) {
-                JSONObject user = (JSONObject) parser.parse(line);
-                if (user.get("username").equals(username) && user.get("password").equals(password)) {
+                User user = objectMapper.readValue(line, User.class);
+                if (user.getUsername().equals(username) && user.getPassword().equals(password)) {
                     currentUser = user; // Set the current user
                     System.out.println("Login successful!");
                     return true;
                 }
             }
-        } catch (IOException | ParseException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
 
@@ -59,7 +57,7 @@ public class Authentication {
         }
     }
 
-    public static JSONObject getCurrentUser() {
+    public static User getCurrentUser() {
         return currentUser; // Retrieve the current logged-in user
     }
 }
