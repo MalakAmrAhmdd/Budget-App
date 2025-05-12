@@ -1,4 +1,8 @@
 package User_Management;
+import Budgeting_Functionalities.Income;
+
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 public class User {
@@ -9,12 +13,30 @@ public class User {
     private String password;
     private String phoneNumber;
 
-//    private List<Income> incomes;
+    private List<Income> incomes = new ArrayList<Income>();
 //    private List<Expense> expenses;
 //    private List<Goal> goals;
 //    private List<Saving> savings;
 //    private List<Debt> debts;
+    private int nextIncomeID;
 
+    public void addIncome(String source, float amount, LocalDate date) {
+        Income income = new Income(nextIncomeID++, source, amount, date);
+        incomes.add(income);
+        System.out.println("Added Income " + income + "to user " + username + ".");
+    }
+
+    public List<Income> getIncomes() {
+        return incomes;
+    }
+
+    public float getTotalIncome() {
+        float total = 0;
+        for (Income income : incomes) {
+            total += income.getAmount();
+        }
+        return total;
+    }
 
     // Default constructor required for Jackson deserialization
     public User() {

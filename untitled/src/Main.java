@@ -1,6 +1,10 @@
+import Budgeting_Functionalities.Income;
 import User_Management.Authentication;
 //import User_Management.OTPManager;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -44,6 +48,59 @@ public class Main {
                     String loginPassword = scanner.nextLine();
                     if (auth.login(loginUsername, loginPassword)) {
                         System.out.println("Welcome, " + Authentication.getCurrentUser().getUsername() + "!");
+                        System.out.println("What do you want to do?");
+                        System.out.println("1. Set & Track Income");
+                        String menuChoice = scanner.nextLine();
+                        switch (menuChoice) {
+                            case "1":
+                                System.out.println("Your total income is " + Authentication.getCurrentUser().getTotalIncome());
+                                System.out.println("1. Track Income");
+                                System.out.println("2. Add Income");
+                                String incomeChoice = scanner.nextLine();
+                                switch (incomeChoice) {
+                                    case "1":
+                                        System.out.println("Your income list:");
+                                        List<Income> incomes = Authentication.getCurrentUser().getIncomes();
+                                        if (incomes.isEmpty()) {
+                                            System.out.println("  No incomes recorded yet.");
+                                        } else {
+                                            for (Income income : incomes) {
+                                                System.out.printf("  [%d] %s: %.2f on %s%n",
+                                                        income.getIncomeID(),
+                                                        income.getSource(),
+                                                        income.getAmount(),
+                                                        income.getDate()
+                                                );
+                                            }
+                                        }
+                                        break;
+                                    case "2":
+                                        System.out.print("Enter income source: ");
+                                        String incomeSource = scanner.nextLine();
+
+                                        System.out.print("Enter income amount: ");
+                                        float incomeAmount;
+                                        try {
+                                            incomeAmount = Float.parseFloat(scanner.nextLine());
+                                        } catch (NumberFormatException e) {
+                                            System.out.println("Invalid amount. Income not recorded.");
+                                            break;
+                                        }
+
+                                        System.out.print("Enter date (YYYY-MM-DD): ");
+                                        LocalDate incomeDate;
+                                        try {
+                                            incomeDate = LocalDate.parse(scanner.nextLine());
+                                        } catch (DateTimeParseException e) {
+                                            System.out.println("Invalid date format. Income not recorded.");
+                                            break;
+                                        }
+
+                                        Authentication.getCurrentUser().addIncome(incomeSource, incomeAmount, incomeDate);
+                                        System.out.println("Income added successfully!");
+                                        break;
+                                }
+                        }
                     }
                     break;
 
