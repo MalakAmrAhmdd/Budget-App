@@ -2,25 +2,27 @@ package User_Management;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.concurrent.atomic.AtomicInteger;
+import java.io.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class Authentication {
-    private static final AtomicInteger ID_COUNTER = new AtomicInteger(1);
     private static User currentUser = null; // Stores the currently logged-in user
 
     public boolean login(String username, String password) {
         ObjectMapper objectMapper = new ObjectMapper();
+        File file = new File("users.json");
+        if (!file.exists() || file.length() == 0) {
+            System.out.println("No users found.");
+            return false;
+        }
 
-        try (BufferedReader reader = new BufferedReader(new FileReader("users.json"))) {
-            String line;
-            while ((line = reader.readLine()) != null) {
-                User user = objectMapper.readValue(line, User.class);
+        try {
+            List<User> users = Arrays.asList(objectMapper.readValue(file, User[].class));
+            for (User user : users) {
                 if (user.getUsername().equals(username) && user.getPassword().equals(password)) {
-                    currentUser = user; // Set the current user
+                    currentUser = user;
                     System.out.println("Login successful!");
                     return true;
                 }
@@ -28,7 +30,6 @@ public class Authentication {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
         System.out.println("User not found or incorrect credentials.");
         return false;
     }
@@ -39,20 +40,25 @@ public class Authentication {
     }
 
     public void signUp(String name, String email, String username, String password, String phoneNumber) {
-        int userId = ID_COUNTER.getAndIncrement();
-        User newUser = new User(userId, name, email, username, password, phoneNumber);
-
         ObjectMapper objectMapper = new ObjectMapper();
-        String jsonUser;
-        try {
-            jsonUser = objectMapper.writeValueAsString(newUser);
-        } catch (IOException e) {
-            e.printStackTrace();
-            return; // Exit the method if serialization fails
+        File file = new File("users.json");
+        List<User> users = new ArrayList<>();
+        if (file.exists() && file.length() > 0) {
+            try {
+                users = Arrays.asList(objectMapper.readValue(file, User[].class));
+                users = new ArrayList<>(users); // To make it mutable
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
-        try (FileWriter file = new FileWriter("users.json", true)) { // Open file in append mode
-            file.write(jsonUser + System.lineSeparator());
-            file.flush();
+
+        int max = users.stream().mapToInt(User::getUserId).max().orElse(0);
+        int newUserId = max+1;
+        User newUser = new User(newUserId, name, email, username, password, phoneNumber);
+        users.add(newUser);
+
+        try (FileWriter writer = new FileWriter(file)) { // Open file in append mode
+            objectMapper.writerWithDefaultPrettyPrinter().writeValue(writer, users);
         } catch (IOException e) {
             e.printStackTrace();
         }

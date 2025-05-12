@@ -1,1 +1,22 @@
-{"userId":1,"name":"yassin","email":"yassinsawy@outlook.com","username":"yassinelsawy","password":"12345678","phoneNumber":"01033822107"}
+[ {
+  "userId" : 1,
+  "name" : "Malak Amr",
+  "email" : "malakamrahmdd@gmail.com",
+  "username" : "Malouk",
+  "password" : "1234567890",
+  "phoneNumber" : "01114417479"
+}, {
+  "userId" : 2,
+  "name" : "Yassin el fekhem",
+  "email" : "yassinsawy@outlook.com",
+  "username" : "yasso",
+  "password" : "1234512345",
+  "phoneNumber" : "0123456789"
+}, {
+  "userId" : 3,
+  "name" : "Abdelrahman Yasser",
+  "email" : "abdelrahmanyr05@gmail.com",
+  "username" : "Pedro",
+  "password" : "6789067890",
+  "phoneNumber" : "01234567890"
+} ]

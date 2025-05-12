@@ -9,11 +9,11 @@ public class User {
     private String password;
     private String phoneNumber;
 
-    private List<Income> incomes;
-    private List<Expense> expenses;
-    private List<Goal> goals;
-    private List<Saving> savings;
-    private List<Debt> debts;
+//    private List<Income> incomes;
+//    private List<Expense> expenses;
+//    private List<Goal> goals;
+//    private List<Saving> savings;
+//    private List<Debt> debts;
 
 
     // Default constructor required for Jackson deserialization
