@@ -17,6 +17,20 @@ public class User {
 
     public void updateProfile(String email, String username, String phoneNumber) {
         // Logic for updating profile
+        if(email!= null && !email.isEmpty()) {
+            this.email = email;
+        }
+        if(username!= null && !username.isEmpty()) {
+            this.username = username;
+        }
+        if(phoneNumber!= null && !phoneNumber.isEmpty()) {
+            this.phoneNumber = phoneNumber;
+        }
+        System.out.println("Profile updated successfully!");
+
+
+
+
     }
 
     public void deleteAccount() {
