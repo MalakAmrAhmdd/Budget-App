@@ -1,41 +1,11 @@
 package Budgeting_Functionalities;
 
 public class Budget {
-    private int budgetID;
     private String category;
-    private float amount;
-    private String startDate;
-    private String endDate;
+    private double spendingLimit;
 
-    // Default constructor required for Jackson deserialization
-    public Budget() {}
-    public Budget(int budgetID, String category, float amount, String startDate, String endDate) {
-        this.budgetID = budgetID;
+    public Budget(String category, double spendingLimit) {
         this.category = category;
-        this.amount = amount;
-        this.startDate = startDate;
-        this.endDate = endDate;
+        this.spendingLimit = spendingLimit;
     }
-    public int getBudgetID() {
-        return budgetID;
-    }
-
-    public String getCategory() {
-        return category;
-    }
-    public void setCategory(String category) {
-        this.category = category;
-    }
-    public float getAmount() {
-        return amount;
-    }
-    public String getStartDate() {
-        return startDate;
-    }
-
-    public String getEndDate() {
-        return endDate;
-    }
-
-
 }

@@ -1,4 +1,5 @@
 import Budgeting_Functionalities.Income;
+import Budgeting_Functionalities.IncomeManager;
 import User_Management.Authentication;
 import User_Management.OTPManager;
 //import User_Management.OTPManager;
@@ -95,8 +96,8 @@ public class Main {
                                             System.out.println("Invalid date format. Income not recorded.");
                                             break;
                                         }
-
-                                        Authentication.getCurrentUser().addIncome(incomeSource, incomeAmount, incomeDate);
+                                        IncomeManager incomeManager = new IncomeManager(Authentication.getCurrentUser());
+                                        incomeManager.addIncome(incomeSource, incomeAmount, incomeDate);
                                         System.out.println("Income added successfully!");
                                         break;
                                 }

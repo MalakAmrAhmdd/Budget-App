@@ -1,9 +1,11 @@
 package Budgeting_Functionalities;
 
+import User_Management.User;
 import java.time.LocalDate;
-import java.util.Date;
+
 
 public class Income {
+    private User user;
     private int incomeID;
     private String source;
     private float amount;
@@ -34,4 +36,6 @@ public class Income {
      public LocalDate getDate() {
         return date;
      }
+
+
 }

@@ -1,40 +1,36 @@
 [ {
-  "userId" : 2,
-  "name" : "Yassin el fekhem",
-  "email" : "yassinsawy@outlook.com",
-  "username" : "yasso",
-  "password" : "1234512345",
-  "phoneNumber" : "0123456789",
-  "incomes" : [ ]
-}, {
   "userId" : 1,
   "name" : "Malak Amr",
   "email" : "malakamrahmdd@gmail.com",
   "username" : "Malouk",
   "password" : "1234567890",
   "phoneNumber" : "01114417479",
-  "incomes" : [ ]
-}, {
-  "userId" : 4,
-  "name" : "abdelrahman",
-  "email" : "abdelrahmanyr05@gmail.com",
-  "username" : "abdelrahman",
-  "password" : "aloalo",
-  "phoneNumber" : "010",
   "incomes" : [ {
     "incomeID" : 0,
-    "source" : "ah",
-    "amount" : 10.0,
-    "date" : [ 2025, 3, 15 ]
-  } ]
+    "source" : "Job",
+    "amount" : 1000.0,
+    "date" : [ 2025, 5, 12 ]
+  }, {
+    "incomeID" : 1,
+    "source" : "masrouf",
+    "amount" : 500.0,
+    "date" : [ 2025, 2, 10 ]
+  }, {
+    "incomeID" : 3,
+    "source" : "lebs el 4o8l",
+    "amount" : 78.0,
+    "date" : [ 2025, 5, 5 ]
+  } ],
+  "nextIncomeID" : 0
 }, {
-  "userId" : 5,
-  "name" : "gdeed",
-  "email" : "salemelzalem@gmail.com",
-  "username" : "salem",
-  "password" : "zalem",
-  "phoneNumber" : "010",
-  "incomes" : [ ]
+  "userId" : 2,
+  "name" : "Yassin el fekhem",
+  "email" : "yassinsawy@outlook.com",
+  "username" : "yasso",
+  "password" : "1234512345",
+  "phoneNumber" : "0123456789",
+  "incomes" : [ ],
+  "nextIncomeID" : 0
 }, {
   "userId" : 3,
   "name" : "Abdelrahman Yasser",
@@ -42,5 +38,6 @@
   "username" : "Pedro",
   "password" : "6789067890",
   "phoneNumber" : "01234567890",
-  "incomes" : [ ]
+  "incomes" : [ ],
+  "nextIncomeID" : 0
 } ]
