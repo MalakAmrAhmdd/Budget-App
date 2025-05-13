@@ -107,7 +107,7 @@ public class User {
             total += income.getAmount();
         }
         for(Budget budget : budgets){
-            total-= budget.getAmount();
+            total-= budget.getLimit();
         }
         return total;
     }
@@ -167,5 +167,8 @@ public class User {
         }
     }
 
+    public void setExpenses(List<Expense> expenses) {
+        this.expenses = expenses;
+    }
 }
 

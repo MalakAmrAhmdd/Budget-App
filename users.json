@@ -38,18 +38,21 @@
     "budgetID" : 1,
     "category" : "Grocery",
     "amount" : 600.0,
+    "limit" : 0.0,
     "startDate" : "2025-05-01",
     "endDate" : "2025-05-30"
   }, {
     "budgetID" : 2,
     "category" : "shoghl",
     "amount" : 200.0,
+    "limit" : 0.0,
     "startDate" : "2023-01-23",
     "endDate" : "2023-02-23"
   }, {
     "budgetID" : 3,
     "category" : "khorog",
     "amount" : 200.0,
+    "limit" : 0.0,
     "startDate" : "2023-06-10",
     "endDate" : "20230-06-11"
   } ],
@@ -73,14 +76,28 @@
     "date" : [ 2025, 1, 1 ]
   } ],
   "nextIncomeID" : 0,
-  "expenses" : null,
+  "expenses" : [ {
+    "expenseID" : 1,
+    "category" : "khareg",
+    "amount" : 200.0,
+    "limit" : 0.0,
+    "date" : [ 2025, 4, 4 ]
+  } ],
   "debts" : [ ],
   "budgets" : [ {
     "budgetID" : 1,
     "category" : "neswan",
     "amount" : 500.0,
+    "limit" : 0.0,
     "startDate" : "2025-06-06",
     "endDate" : "2025-07-07"
+  }, {
+    "budgetID" : 2,
+    "category" : "khareg",
+    "amount" : 300.0,
+    "limit" : 500.0,
+    "startDate" : "2025-04-02",
+    "endDate" : "2025-04-03"
   } ],
   "savings" : [ ]
 }, {

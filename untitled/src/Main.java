@@ -1,6 +1,4 @@
-import Budgeting_Functionalities.BudgetManager;
-import Budgeting_Functionalities.Income;
-import Budgeting_Functionalities.IncomeManager;
+import Budgeting_Functionalities.*;
 import User_Management.Authentication;
 import User_Management.OTPManager;
 //import User_Management.OTPManager;
@@ -52,7 +50,8 @@ public class Main {
                         System.out.println("Welcome, " + Authentication.getCurrentUser().getUsername() + "!");
                         System.out.println("What do you want to do?");
                         System.out.println("1. Set & Track Income");
-                        System.out.println("2. Set Budget Categories");
+                        System.out.println("2. Set & Track Budget Categories");
+                        System.out.println("3. Set & Track Expenses");
                         String menuChoice = scanner.nextLine();
                         switch (menuChoice) {
                             case "1":
@@ -105,33 +104,118 @@ public class Main {
                                 }
                                 break;
                             case "2":
-                                System.out.print("Enter category: ");
-                                String category = scanner.nextLine();
+                                System.out.println("1. Add Budget Category");
+                                System.out.println("2. View Budget Categories");
+                                String budgetChoice = scanner.nextLine();
+                                switch (budgetChoice) {
+                                    case "1":
+                                        System.out.print("Enter budget category: ");
+                                        String category = scanner.nextLine();
 
-                                System.out.print("Enter budget limit: ");
-                                float budgetLimit;
-                                try {
-                                    budgetLimit = Float.parseFloat(scanner.nextLine());
-                                } catch (NumberFormatException e) {
-                                    System.out.println("Invalid amount. Budget not added.");
-                                    break;
-                                }
+                                        System.out.print("Enter budget amount: ");
+                                        float budgetAmount;
+                                        try {
+                                            budgetAmount = Float.parseFloat(scanner.nextLine());
+                                        } catch (NumberFormatException e) {
+                                            System.out.println("Invalid amount. Budget not added.");
+                                            break;
+                                        }
 
-                                System.out.print("Enter start date (YYYY-MM-DD): ");
-                                String startDate = scanner.nextLine();
+                                        System.out.print("Enter start date (YYYY-MM-DD): ");
+                                        String startDate = scanner.nextLine();
 
-                                System.out.print("Enter end date (YYYY-MM-DD): ");
-                                String endDate = scanner.nextLine();
+                                        System.out.print("Enter end date (YYYY-MM-DD): ");
+                                        String endDate = scanner.nextLine();
 
-                                BudgetManager budgetManager = new BudgetManager(Authentication.getCurrentUser());
-                                boolean budgetAdded = budgetManager.addBudget(category, budgetLimit, startDate, endDate);
+                                        BudgetManager budgetManager = new BudgetManager(Authentication.getCurrentUser());
+                                        boolean budgetAdded = budgetManager.addBudget(category, budgetAmount, startDate, endDate);
 
-                                if (budgetAdded) {
-                                    System.out.println("Budget added successfully.");
-                                } else {
-                                    System.out.println("Failed to add budget.");
+                                        if (budgetAdded) {
+                                            System.out.println("Budget added successfully.");
+                                        } else {
+                                            System.out.println("Failed to add budget.");
+                                        }
+                                        break;
+
+                                    case "2":
+                                        System.out.println("Your budget categories:");
+                                        List<Budget> budgets = Authentication.getCurrentUser().getBudgets();
+                                        if (budgets.isEmpty()) {
+                                            System.out.println("  No budgets recorded yet.");
+                                        } else {
+                                            for (Budget budget : budgets) {
+                                                System.out.printf("  [%d] %s: %.2f from %s to %s%n",
+                                                        budget.getBudgetID(),
+                                                        budget.getCategory(),
+                                                        budget.getAmount(),
+                                                        budget.getStartDate(),
+                                                        budget.getEndDate()
+                                                );
+                                            }
+                                        }
+                                        break;
+
+                                    default:
+                                        System.out.println("Invalid choice.");
+
                                 }
                                 break;
+                            case "3":
+                                System.out.println("1. Add Expense");
+                                System.out.println("2. View Expenses");
+                                String expenseChoice = scanner.nextLine();
+                                switch (expenseChoice) {
+                                    case "1":
+                                        System.out.print("Enter expense amount: ");
+                                        float expenseAmount;
+                                        try {
+                                            expenseAmount = Float.parseFloat(scanner.nextLine());
+                                        } catch (NumberFormatException e) {
+                                            System.out.println("Invalid amount. Expense not added.");
+                                            break;
+                                        }
+
+                                        System.out.print("Enter date (YYYY-MM-DD): ");
+                                        LocalDate expenseDate;
+                                        try {
+                                            expenseDate = LocalDate.parse(scanner.nextLine());
+                                        } catch (DateTimeParseException e) {
+                                            System.out.println("Invalid date format. Expense not added.");
+                                            break;
+                                        }
+
+                                        ExpenseManager expenseManager = new ExpenseManager(Authentication.getCurrentUser());
+                                        boolean expenseAdded = expenseManager.addExpense(expenseAmount, expenseDate);
+
+                                        if (expenseAdded) {
+                                            System.out.println("Expense added successfully.");
+                                        } else {
+                                            System.out.println("Failed to add expense.");
+                                        }
+                                        break;
+
+                                    case "2":
+                                        System.out.println("Your expense list:");
+                                        List<Expense> expenses = Authentication.getCurrentUser().getExpenses();
+                                        if (expenses.isEmpty()) {
+                                            System.out.println("  No expenses recorded yet.");
+                                        } else {
+                                            for (Expense expense : expenses) {
+                                                System.out.printf("  [%d] %s: %.2f on %s%n",
+                                                        expense.getExpenseID(),
+                                                        expense.getCategory(),
+                                                        expense.getAmount(),
+                                                        expense.getDate()
+                                                );
+                                            }
+                                        }
+                                        break;
+
+                                    default:
+                                        System.out.println("Invalid choice.");
+                                }
+                                break;
+
 
                         }
                     }
