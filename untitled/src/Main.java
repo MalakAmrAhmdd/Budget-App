@@ -4,9 +4,14 @@ import Analytics.Insights_and_Financial_reports;
 import Budgeting_Functionalities.*;
 import User_Management.*;
 import Notification.*;
+
+import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 import java.time.format.DateTimeParseException;
+import java.sql.Time;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 
 import java.time.LocalDate;
@@ -57,6 +62,9 @@ public class Main {
                     String loginPassword = scanner.nextLine();
                     if (auth.login(loginUsername, loginPassword)) {
                         boolean loggedIn = true;
+                        // Start reminder checker for the logged-in user
+                        ReminderChecker reminderChecker = new ReminderChecker();
+                        reminderChecker.startChecking(Authentication.getCurrentUser());
                         while (loggedIn) {
                             System.out.println("\n--- User Menu ---");
                             System.out.println("1. Profile Management");
@@ -385,8 +393,49 @@ public class Main {
                                     break;
 
                                 case "7": // Reminders
-                                    System.out.println("Feature coming soon: Reminders management.");
-                                    // You can add ReminderManager integration here.
+                                    System.out.println("1. View Reminders");
+                                    System.out.println("2. Add Reminder");
+                                    String reminderChoice = scanner.nextLine();
+                                    switch (reminderChoice) {
+                                        case "1":
+                                            List<Reminder> reminders = Authentication.getCurrentUser().getReminders();
+                                            if (reminders == null || reminders.isEmpty()) {
+                                                System.out.println("No reminders found.");
+                                            } else {
+                                                for (Reminder reminder : reminders) {
+                                                    System.out.printf("  [%d] %s on %s at %s%n",
+                                                        reminder.getReminderId(),
+                                                        reminder.getReminderTitle(),
+                                                        new SimpleDateFormat("yyyy-MM-dd").format(reminder.getReminderDate()),
+                                                        reminder.getReminderTime().toString()
+                                                    );
+                                                }
+                                            }
+                                            break;
+                                        case "2":
+                                            System.out.print("Enter reminder title: ");
+                                            String reminderTitle = scanner.nextLine();
+                                            System.out.print("Enter reminder date (YYYY-MM-DD): ");
+                                            String dateStr = scanner.nextLine();
+                                            System.out.print("Enter reminder time (HH:MM:SS): ");
+                                            String timeStr = scanner.nextLine();
+                                            Date reminderDate;
+                                            Time reminderTime;
+                                            try {
+                                                reminderDate = new SimpleDateFormat("yyyy-MM-dd").parse(dateStr);
+                                                reminderTime = Time.valueOf(timeStr);
+                                            } catch (ParseException | IllegalArgumentException e) {
+                                                System.out.println("Invalid date or time format. Reminder not added.");
+                                                break;
+                                            }
+                                            int reminderId = Authentication.getCurrentUser().getReminders().size() + 1;
+                                            ReminderManager reminderManager = new ReminderManager();
+                                            reminderManager.addReminder(Authentication.getCurrentUser(), reminderId, reminderTitle, reminderDate, reminderTime);
+                                            System.out.println("Reminder added successfully!");
+                                            break;
+                                        default:
+                                            System.out.println("Invalid choice.");
+                                    }
                                     break;
 
                                 case "8": // Insights & Financial Reports
@@ -397,6 +446,7 @@ public class Main {
                                 case "9": // Logout
                                     auth.logout();
                                     loggedIn = false;
+                                    reminderChecker.stopChecking();
                                     break;
 
                                 case "10": // Delete Account
@@ -406,6 +456,7 @@ public class Main {
                                         Authentication.getCurrentUser().deleteAccount();
                                         auth.logout();
                                         loggedIn = false;
+                                        reminderChecker.stopChecking();
                                         System.out.println("Account deleted successfully.");
                                     } else {
                                         System.out.println("Account deletion canceled.");

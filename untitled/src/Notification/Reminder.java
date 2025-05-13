@@ -13,6 +13,11 @@ package Notification;
         private Time reminderTime;
 
         /**
+         * Default constructor required for Jackson deserialization.
+         */
+        public Reminder() {}
+
+        /**
          * Constructs a new Reminder.
          *
          * @param reminderId    The unique ID of the reminder.

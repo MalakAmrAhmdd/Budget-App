@@ -1,4 +1,71 @@
 [ {
+  "userId" : 2,
+  "name" : "Yassin el fekhem",
+  "email" : "yassinsawy@outlook.com",
+  "username" : "yasso",
+  "password" : "2",
+  "phoneNumber" : "010",
+  "incomes" : [ {
+    "incomeID" : 1,
+    "source" : "buisness",
+    "amount" : 5000.0,
+    "date" : [ 2025, 5, 9 ]
+  }, {
+    "incomeID" : 2,
+    "source" : "aboia",
+    "amount" : 500.0,
+    "date" : [ 2025, 1, 1 ]
+  } ],
+  "nextIncomeID" : 0,
+  "expenses" : [ {
+    "expenseID" : 1,
+    "category" : "khareg",
+    "amount" : 200.0,
+    "limit" : 0.0,
+    "date" : [ 2025, 4, 4 ]
+  } ],
+  "budgets" : [ {
+    "budgetID" : 1,
+    "category" : "neswan",
+    "amount" : 500.0,
+    "limit" : 0.0,
+    "startDate" : "2025-06-06",
+    "endDate" : "2025-07-07"
+  }, {
+    "budgetID" : 2,
+    "category" : "khareg",
+    "amount" : 300.0,
+    "limit" : 500.0,
+    "startDate" : "2025-04-02",
+    "endDate" : "2025-04-03"
+  } ],
+  "reminders" : [ {
+    "reminderId" : 1,
+    "reminderTitle" : "Edf3 el net",
+    "reminderDate" : 1747083600000,
+    "reminderTime" : "09:17:00"
+  }, {
+    "reminderId" : 2,
+    "reminderTitle" : "rem",
+    "reminderDate" : 1747083600000,
+    "reminderTime" : "09:30:30"
+  } ],
+  "saving_goals" : [ {
+    "goalID" : 1,
+    "name" : "hdom",
+    "targetAmount" : 1000.0,
+    "deadline" : [ 2025, 5, 15 ],
+    "totalSavings" : 0.0
+  } ],
+  "debts" : [ {
+    "amountOwed" : 500.0,
+    "debtID" : 1,
+    "creditor" : "arabya",
+    "totalAmount" : 500.0,
+    "remainingAmount" : 200.0,
+    "dueDate" : [ 2025, 4, 2 ]
+  } ]
+}, {
   "userId" : 1,
   "name" : "Malak Amr",
   "email" : "malakamrahmdd@gmail.com",
@@ -59,60 +126,37 @@
   "saving_goals" : [ ],
   "debts" : [ ]
 }, {
-  "userId" : 2,
-  "name" : "Yassin el fekhem",
-  "email" : "yassinsawy@outlook.com",
-  "username" : "yasso",
-  "password" : "2",
-  "phoneNumber" : "0123456789",
-  "incomes" : [ {
-    "incomeID" : 1,
-    "source" : "buisness",
-    "amount" : 5000.0,
-    "date" : [ 2025, 5, 9 ]
-  }, {
-    "incomeID" : 2,
-    "source" : "aboia",
-    "amount" : 500.0,
-    "date" : [ 2025, 1, 1 ]
-  } ],
+  "userId" : 3,
+  "name" : "Abdelrahman",
+  "email" : "abdelrahmanyr05@gmail.com",
+  "username" : "pedro",
+  "password" : "1",
+  "phoneNumber" : "012",
+  "incomes" : [ ],
   "nextIncomeID" : 0,
-  "expenses" : [ {
-    "expenseID" : 1,
-    "category" : "khareg",
-    "amount" : 200.0,
-    "limit" : 0.0,
-    "date" : [ 2025, 4, 4 ]
-  } ],
-  "budgets" : [ {
-    "budgetID" : 1,
-    "category" : "neswan",
-    "amount" : 500.0,
-    "limit" : 0.0,
-    "startDate" : "2025-06-06",
-    "endDate" : "2025-07-07"
+  "expenses" : [ ],
+  "budgets" : [ ],
+  "reminders" : [ {
+    "reminderId" : 1,
+    "reminderTitle" : "Edf3 el net",
+    "reminderDate" : 1747083600000,
+    "reminderTime" : "09:38:00"
   }, {
-    "budgetID" : 2,
-    "category" : "khareg",
-    "amount" : 300.0,
-    "limit" : 500.0,
-    "startDate" : "2025-04-02",
-    "endDate" : "2025-04-03"
+    "reminderId" : 2,
+    "reminderTitle" : "edf3 el kahraba",
+    "reminderDate" : 1747083600000,
+    "reminderTime" : "09:45:00"
+  }, {
+    "reminderId" : 3,
+    "reminderTitle" : "edf3 ay haga",
+    "reminderDate" : 1747083600000,
+    "reminderTime" : "09:48:00"
+  }, {
+    "reminderId" : 4,
+    "reminderTitle" : "edf3",
+    "reminderDate" : 1747083600000,
+    "reminderTime" : "21:51:00"
   } ],
-  "reminders" : [ ],
-  "saving_goals" : [ {
-    "goalID" : 1,
-    "name" : "hdom",
-    "targetAmount" : 1000.0,
-    "deadline" : [ 2025, 5, 15 ],
-    "totalSavings" : 0.0
-  } ],
-  "debts" : [ {
-    "amountOwed" : 500.0,
-    "debtID" : 1,
-    "creditor" : "arabya",
-    "totalAmount" : 500.0,
-    "remainingAmount" : 200.0,
-    "dueDate" : [ 2025, 4, 2 ]
-  } ]
+  "saving_goals" : [ ],
+  "debts" : [ ]
 } ]

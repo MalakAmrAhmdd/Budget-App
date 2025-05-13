@@ -1,5 +1,7 @@
 package Notification;
 
+import User_Management.User;
+
 import java.time.LocalDate;
 import java.time.LocalTime;
 
@@ -17,11 +19,14 @@ public class NotificationManager
      * @param notificationId The ID of the notification.
      * @param content The content of the notification.
      */
-    public void sendNotification(int notificationId, String content) {
+    public void sendNotification(User user, int notificationId, String content) {
         // Get the current date and time
         LocalDate d = LocalDate.now();
         LocalTime t = LocalTime.now();
         Notification notification = new Notification(notificationId, content, d, t);
-        System.out.println("Notification sent: " + notification.getContent() + " at " + notification.getSentTime());
+
+        MailManager mail = new MailManager();
+
+        mail.sendNotificationEmail(user.getEmail(), "Reminder", content);
     }
 }
