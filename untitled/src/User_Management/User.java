@@ -1,4 +1,5 @@
 package User_Management;
+import Budgeting_Functionalities.Expense;
 import Budgeting_Functionalities.Income;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -71,9 +72,15 @@ public class User {
         return incomes;
     }
 
+    public List<Expense> getExpenses() {
+        return null;
+    }
+
     public int getNextIncomeID() {
         return nextIncomeID;
     }
+
+
 
     //methods
 
@@ -97,6 +104,18 @@ public class User {
             total += income.getAmount();
         }
         return total;
+    }
+
+    public float getTotalDebt() {
+        return 0;
+    }
+
+    public float getTotalSavings() {
+        return 0;
+    }
+
+    public float getTotalExpenses() {
+        return 0;
     }
 
 
@@ -132,4 +151,6 @@ public class User {
             e.printStackTrace();
         }
     }
+
+
 }

@@ -20,8 +20,17 @@
     "source" : "lebs el 4o8l",
     "amount" : 78.0,
     "date" : [ 2025, 5, 5 ]
+  }, {
+    "incomeID" : 4,
+    "source" : "work",
+    "amount" : 22.0,
+    "date" : [ 2025, 5, 1 ]
   } ],
-  "nextIncomeID" : 0
+  "nextIncomeID" : 0,
+  "expenses" : null,
+  "totalSavings" : 0.0,
+  "totalExpenses" : 0.0,
+  "totalDebt" : 0.0
 }, {
   "userId" : 2,
   "name" : "Yassin el fekhem",
@@ -30,7 +39,11 @@
   "password" : "1234512345",
   "phoneNumber" : "0123456789",
   "incomes" : [ ],
-  "nextIncomeID" : 0
+  "nextIncomeID" : 0,
+  "expenses" : null,
+  "totalSavings" : 0.0,
+  "totalExpenses" : 0.0,
+  "totalDebt" : 0.0
 }, {
   "userId" : 3,
   "name" : "Abdelrahman Yasser",
@@ -39,5 +52,9 @@
   "password" : "6789067890",
   "phoneNumber" : "01234567890",
   "incomes" : [ ],
-  "nextIncomeID" : 0
+  "nextIncomeID" : 0,
+  "expenses" : null,
+  "totalSavings" : 0.0,
+  "totalExpenses" : 0.0,
+  "totalDebt" : 0.0
 } ]
