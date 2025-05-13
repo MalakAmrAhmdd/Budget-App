@@ -2,10 +2,12 @@ package Analytics;
 
 import Budgeting_Functionalities.Expense;
 import Budgeting_Functionalities.Income;
+import Budgeting_Functionalities.Debt;
 import User_Management.User;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+import java.time.LocalDate;
 
 public class Insights_and_Financial_reports {
 
@@ -26,7 +28,7 @@ public class Insights_and_Financial_reports {
     private void displayIncomeSources() {
         System.out.println("\nIncome Sources:");
         List<Income> incomes = user.getIncomes();
-        if (incomes.isEmpty()) {
+        if (incomes == null || incomes.isEmpty()) {
             System.out.println("  No income data available.");
         } else {
             Map<String, Double> incomeSources = incomes.stream()
@@ -39,8 +41,8 @@ public class Insights_and_Financial_reports {
 
     private void displayCategorizedSpending() {
         System.out.println("\nCategorized Spending:");
-        List<Budgeting_Functionalities.Expense> expenses = user.getExpenses(); // Assuming `getExpenses` exists in `User`
-        if (expenses.isEmpty()) {
+        List<Expense> expenses = user.getExpenses();
+        if (expenses == null || expenses.isEmpty()) {
             System.out.println("  No expense data available.");
         } else {
             Map<String, Double> spendingByCategory = expenses.stream()
@@ -53,19 +55,48 @@ public class Insights_and_Financial_reports {
 
     private void displayDebtStatus() {
         System.out.println("\nDebt Status:");
-        float totalDebt = user.getTotalDebt(); // Assuming `getTotalDebt` exists in `User`
-        if (totalDebt == 0) {
+        List<Debt> debts = user.getDebts();
+        float totalDebt = user.getTotalDebt();
+        if (debts == null || debts.isEmpty()) {
             System.out.println("  No outstanding debt.");
         } else {
-            System.out.printf("  Total Debt: %.2f%n", totalDebt);
+            debts.forEach(debt -> {
+                LocalDate dueDate = debt.getDueDate();
+                System.out.printf("  Debt ID: %d, Creditor: %s, Remaining Amount: %.2f, Amount Owed: %.2f, Due Date: %s%n",
+                        debt.getDebtID(),
+                        debt.getCreditor(),
+                        debt.getRemainingAmount(),
+                        debt.getAmountOwed(),
+                        dueDate != null ? dueDate.toString() : "N/A"
+                );
+            });
         }
     }
 
     private void provideInsightsAndRecommendations() {
         System.out.println("\nInsights and Recommendations:");
-        float totalIncome = user.getTotalIncome();
-        float totalExpenses = user.getTotalExpenses(); // Assuming `getTotalExpenses` exists in `User`
-        float totalSavings = user.getTotalSavings(); // Assuming `getTotalSavings` exists in `User`
+        float totalIncome = 0;
+        float totalExpenses = 0;
+        float totalSavings = 0;
+        float totalDebt = user.getTotalDebt();
+
+        List<Income> incomes = user.getIncomes();
+        if (incomes != null) {
+            totalIncome = (float) incomes.stream().mapToDouble(Income::getAmount).sum();
+        }
+        List<Expense> expenses = user.getExpenses();
+        if (expenses != null) {
+            totalExpenses = (float) expenses.stream().mapToDouble(Expense::getAmount).sum();
+        }
+        if (user.getSavingGoals() != null) {
+            totalSavings = (float) user.getSavingGoals().stream().mapToDouble(g -> {
+                try {
+                    return g.getTotalSavings();
+                } catch (Exception e) {
+                    return 0.0;
+                }
+            }).sum();
+        }
 
         if (totalIncome > totalExpenses) {
             System.out.println("  Good job! Your income exceeds your expenses.");
@@ -77,7 +108,9 @@ public class Insights_and_Financial_reports {
             System.out.println("  Recommendation: Aim to save at least 20% of your income.");
         }
 
-        if (user.getTotalDebt() > 0) {
+        System.out.printf("  Total Debt: %.2f%n", totalDebt);
+
+        if (totalDebt > 0) {
             System.out.println("  Recommendation: Focus on paying off your debt to improve financial health.");
         }
     }

@@ -37,18 +37,6 @@ public class IncomeManager {
         incomes.add(income);
         user.updateUserInFile();
     }
-    /**
-     * Calculates the total income for the user.
-     *
-     * @return The total income amount.
-     */
 
-    @JsonIgnore
-    public float getTotalIncome() {
-        float total = 0;
-        for (Income income : user.getIncomes()) {
-            total += income.getAmount();
-        }
-        return total;
-    }
+
 }

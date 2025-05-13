@@ -33,7 +33,6 @@
   } ],
   "nextIncomeID" : 0,
   "expenses" : null,
-  "debts" : [ ],
   "budgets" : [ {
     "budgetID" : 1,
     "category" : "Grocery",
@@ -56,7 +55,8 @@
     "startDate" : "2023-06-10",
     "endDate" : "20230-06-11"
   } ],
-  "savings" : [ ]
+  "saving_goals" : [ ],
+  "debts" : [ ]
 }, {
   "userId" : 2,
   "name" : "Yassin el fekhem",
@@ -83,7 +83,6 @@
     "limit" : 0.0,
     "date" : [ 2025, 4, 4 ]
   } ],
-  "debts" : [ ],
   "budgets" : [ {
     "budgetID" : 1,
     "category" : "neswan",
@@ -99,7 +98,21 @@
     "startDate" : "2025-04-02",
     "endDate" : "2025-04-03"
   } ],
-  "savings" : [ ]
+  "saving_goals" : [ {
+    "goalID" : 1,
+    "name" : "hdom",
+    "targetAmount" : 1000.0,
+    "deadline" : [ 2025, 5, 15 ],
+    "totalSavings" : 0.0
+  } ],
+  "debts" : [ {
+    "amountOwed" : 500.0,
+    "debtID" : 1,
+    "creditor" : "arabya",
+    "totalAmount" : 500.0,
+    "remainingAmount" : 200.0,
+    "dueDate" : [ 2025, 4, 2 ]
+  } ]
 }, {
   "userId" : 3,
   "name" : "Abdelrahman Yasser",
@@ -110,7 +123,7 @@
   "incomes" : [ ],
   "nextIncomeID" : 0,
   "expenses" : null,
-  "debts" : [ ],
   "budgets" : [ ],
-  "savings" : [ ]
+  "saving_goals" : [ ],
+  "debts" : [ ]
 } ]

@@ -2,14 +2,16 @@ package User_Management;
 import Budgeting_Functionalities.*;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.io.File;
 import java.io.IOException;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class User {
     private int userId;
     private String name;
@@ -21,7 +23,9 @@ public class User {
     private List<Income> incomes = new ArrayList<Income>();
     private int nextIncomeID = 0;
     private List<Expense> expenses = new ArrayList<Expense>();
+    @JsonProperty("saving_goals")
     private List<Saving_Goal> savingGoals = new ArrayList<Saving_Goal>();
+    @JsonProperty("debts")
     private List<Debt> debts = new ArrayList<Debt>();
     private List<Budget> budgets = new ArrayList<Budget>();
 
@@ -71,7 +75,7 @@ public class User {
         return expenses;
     }
 
-    public List<Saving_Goal> getSavings() {
+    public List<Saving_Goal> getSavingGoals() {
         return savingGoals;
     }
     public List<Debt> getDebts() {
@@ -115,7 +119,7 @@ public class User {
     public float getTotalDebt() {
         float total = 0;
         for (Debt debt : debts) {
-            total += debt.getAmount();
+            total += debt.getAmountOwed();
         }
         return total;
 
@@ -170,5 +174,11 @@ public class User {
     public void setExpenses(List<Expense> expenses) {
         this.expenses = expenses;
     }
+
+
+    public void setSavingGoals(List<Saving_Goal> goals) {
+        this.savingGoals = goals;
+    }
 }
+
 
