@@ -133,8 +133,6 @@ public class User {
         return total;
     }
 
-
-
     public void deleteAccount() {
         // Logic for deleting account
     }
@@ -166,6 +164,4 @@ public class User {
             e.printStackTrace();
         }
     }
-
-
 }

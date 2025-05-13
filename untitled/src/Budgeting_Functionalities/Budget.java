@@ -26,6 +26,9 @@ public class Budget {
     public void setCategory(String category) {
         this.category = category;
     }
+    public void setAmount(float amount) {
+        this.amount = amount;
+    }
     public float getAmount() {
         return amount;
     }
