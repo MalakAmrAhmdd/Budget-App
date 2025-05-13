@@ -42,7 +42,7 @@ public void addIncome(String source, float amount, LocalDate date) {
 
    private void updateUserInFile() {
        ObjectMapper objectMapper = new ObjectMapper();
-//       objectMapper.registerModule(new com.fasterxml.jackson.datatype.jsr310.JavaTimeModule()); // Register JavaTimeModule
+       objectMapper.registerModule(new com.fasterxml.jackson.datatype.jsr310.JavaTimeModule()); // Register JavaTimeModule
        File file = new File("users.json");
        if (!file.exists()) {
            System.out.println("User file not found.");

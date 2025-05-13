@@ -29,5 +29,10 @@
   "username" : "abdelrahman",
   "password" : "aloalo",
   "phoneNumber" : "010",
-  "incomes" : [ ]
+  "incomes" : [ {
+    "incomeID" : 0,
+    "source" : "ah",
+    "amount" : 10.0,
+    "date" : [ 2025, 3, 15 ]
+  } ]
 } ]
