@@ -9,6 +9,9 @@ public class Income {
     private float amount;
     private LocalDate date;
 
+    // Default constructor required for Jackson deserialization
+    public Income() {}
+
     public Income(int incomeID, String source, float amount, LocalDate date) {
         this.incomeID = incomeID;
         this.source = source;

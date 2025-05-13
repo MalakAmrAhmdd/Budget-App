@@ -9,7 +9,8 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-//import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 public class User {
     private int userId;
@@ -69,6 +70,7 @@ public void addIncome(String source, float amount, LocalDate date) {
     public List<Income> getIncomes() {
         return incomes;
     }
+
     @JsonIgnore
     public float getTotalIncome() {
         float total = 0;

@@ -1,12 +1,33 @@
 [ {
   "userId" : 1,
-  "name" : "elfekhm",
-  "email" : "elfekhm@gmail.com",
-  "username" : "yassin",
-  "password" : "11111111",
-  "phoneNumber" : "4664564",
-  "incomes" : [ {
-    "incomeID" : 0,
-    "source" : "khamra",
-    "amount" : 2500.0,
-    "date"
+  "name" : "Malak Amr",
+  "email" : "malakamrahmdd@gmail.com",
+  "username" : "Malouk",
+  "password" : "1234567890",
+  "phoneNumber" : "01114417479",
+  "incomes" : [ ]
+}, {
+  "userId" : 2,
+  "name" : "Yassin el fekhem",
+  "email" : "yassinsawy@outlook.com",
+  "username" : "yasso",
+  "password" : "1234512345",
+  "phoneNumber" : "0123456789",
+  "incomes" : [ ]
+}, {
+  "userId" : 3,
+  "name" : "Abdelrahman Yasser",
+  "email" : "abdelrahmanyr05@gmail.com",
+  "username" : "Pedro",
+  "password" : "6789067890",
+  "phoneNumber" : "01234567890",
+  "incomes" : [ ]
+}, {
+  "userId" : 4,
+  "name" : "abdelrahman",
+  "email" : "abdelrahmanyr05@gmail.com",
+  "username" : "abdelrahman",
+  "password" : "aloalo",
+  "phoneNumber" : "010",
+  "incomes" : [ ]
+} ]

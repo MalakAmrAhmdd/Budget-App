@@ -1,5 +1,6 @@
 import Budgeting_Functionalities.Income;
 import User_Management.Authentication;
+import User_Management.OTPManager;
 //import User_Management.OTPManager;
 
 import java.time.LocalDate;
@@ -10,7 +11,7 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Authentication auth = new Authentication();
-//        OTPManager otpManager = new OTPManager();
+        OTPManager otpManager = new OTPManager();
         Scanner scanner = new Scanner(System.in);
 
         while (true) {
@@ -104,28 +105,28 @@ public class Main {
                     }
                     break;
 
-//                case 3: // Fix OTP sending option
-//                    if (Authentication.getCurrentUser() != null) {
-//                        String recipientEmail = Authentication.getCurrentUser().getEmail();
-//                        otpManager.sendOTPViaEmail(recipientEmail);
-//                    } else {
-//                        System.out.println("Please log in first.");
-//                    }
-//                    break;
-//
-//                case 4: // Fix OTP validation option
-//                    if (Authentication.getCurrentUser() != null) {
-//                        System.out.print("Enter the OTP: ");
-//                        String otp = scanner.nextLine();
-//                        if (otpManager.validateOTP(otp)) {
-//                            System.out.println("OTP validated successfully!");
-//                        } else {
-//                            System.out.println("Invalid OTP.");
-//                        }
-//                    } else {
-//                        System.out.println("Please log in first.");
-//                    }
-//                    break;
+                case 3: // Fix OTP sending option
+                    if (Authentication.getCurrentUser() != null) {
+                        String recipientEmail = Authentication.getCurrentUser().getEmail();
+                        otpManager.sendOTPViaEmail(recipientEmail);
+                    } else {
+                        System.out.println("Please log in first.");
+                    }
+                    break;
+
+                case 4: // Fix OTP validation option
+                    if (Authentication.getCurrentUser() != null) {
+                        System.out.print("Enter the OTP: ");
+                        String otp = scanner.nextLine();
+                        if (otpManager.validateOTP(otp)) {
+                            System.out.println("OTP validated successfully!");
+                        } else {
+                            System.out.println("Invalid OTP.");
+                        }
+                    } else {
+                        System.out.println("Please log in first.");
+                    }
+                    break;
 
                 case 5:
                     auth.logout();
