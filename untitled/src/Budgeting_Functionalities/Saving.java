@@ -2,9 +2,22 @@ package Budgeting_Functionalities;
 
 
 public class Saving {
-    private double totalSaved;
+    private int savingID;
+    private float totalSavings;
 
-    public void addSavings(double amount) {
-        this.totalSaved += amount;
+
+    // Default constructor required for Jackson deserialization
+    public Saving() {
     }
+    public Saving(int savingID, float totalSavings) {
+        this.savingID = savingID;
+        this.totalSavings = totalSavings;
+    }
+    public int getSavingID() {
+        return savingID;
+    }
+    public float getTotalSavings() {
+        return totalSavings;
+    }
+
 }

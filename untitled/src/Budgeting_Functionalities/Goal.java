@@ -1,17 +1,35 @@
 package Budgeting_Functionalities;
 
 public class Goal {
-    private String name;
-    private double targetAmount;
-    private double currentAmount;
+    private int goalID;
+    private String goalName;
+    private float targetAmount;
+    private float savedAmount;
+    private String targetDate;
 
-    public Goal(String name, double targetAmount) {
-        this.name = name;
+    // Default constructor required for Jackson deserialization
+    public Goal() {}
+    public Goal(int goalID, String goalName, float targetAmount, float savedAmount, String targetDate) {
+        this.goalID = goalID;
+        this.goalName = goalName;
         this.targetAmount = targetAmount;
-        this.currentAmount = 0;
+        this.savedAmount = savedAmount;
+        this.targetDate = targetDate;
+    }
+    public int getGoalID() {
+        return goalID;
+    }
+    public String getGoalName() {
+        return goalName;
     }
 
-    public void trackProgress(double amount) {
-        this.currentAmount += amount;
+    public float getTargetAmount() {
+        return targetAmount;
+    }
+    public void setTargetAmount(float targetAmount) {
+        this.targetAmount = targetAmount;
+    }
+    public String getTargetDate(String targetDate) {
+        return targetDate;
     }
 }
