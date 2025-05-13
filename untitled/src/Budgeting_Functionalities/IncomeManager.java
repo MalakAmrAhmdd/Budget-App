@@ -18,7 +18,6 @@ public class IncomeManager {
         int nextID = incomes.size() + 1;
         Income income = new Income(nextID, source, amount, date);
         incomes.add(income);
-//        System.out.println("Added Income " + income + " to user " + username + ".");
         user.updateUserInFile();
     }
 

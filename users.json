@@ -23,8 +23,13 @@
   }, {
     "incomeID" : 4,
     "source" : "work",
-    "amount" : 22.0,
+    "amount" : -178.0,
     "date" : [ 2025, 5, 1 ]
+  }, {
+    "incomeID" : 5,
+    "source" : "work",
+    "amount" : -22.0,
+    "date" : [ 2025, 5, 3 ]
   } ],
   "nextIncomeID" : 0,
   "expenses" : null,
@@ -35,6 +40,18 @@
     "amount" : 600.0,
     "startDate" : "2025-05-01",
     "endDate" : "2025-05-30"
+  }, {
+    "budgetID" : 2,
+    "category" : "shoghl",
+    "amount" : 200.0,
+    "startDate" : "2023-01-23",
+    "endDate" : "2023-02-23"
+  }, {
+    "budgetID" : 3,
+    "category" : "khorog",
+    "amount" : 200.0,
+    "startDate" : "2023-06-10",
+    "endDate" : "20230-06-11"
   } ],
   "savings" : [ ]
 }, {
@@ -42,13 +59,29 @@
   "name" : "Yassin el fekhem",
   "email" : "yassinsawy@outlook.com",
   "username" : "yasso",
-  "password" : "1234512345",
+  "password" : "2",
   "phoneNumber" : "0123456789",
-  "incomes" : [ ],
+  "incomes" : [ {
+    "incomeID" : 1,
+    "source" : "buisness",
+    "amount" : 5000.0,
+    "date" : [ 2025, 5, 9 ]
+  }, {
+    "incomeID" : 2,
+    "source" : "aboia",
+    "amount" : 500.0,
+    "date" : [ 2025, 1, 1 ]
+  } ],
   "nextIncomeID" : 0,
   "expenses" : null,
   "debts" : [ ],
-  "budgets" : [ ],
+  "budgets" : [ {
+    "budgetID" : 1,
+    "category" : "neswan",
+    "amount" : 500.0,
+    "startDate" : "2025-06-06",
+    "endDate" : "2025-07-07"
+  } ],
   "savings" : [ ]
 }, {
   "userId" : 3,

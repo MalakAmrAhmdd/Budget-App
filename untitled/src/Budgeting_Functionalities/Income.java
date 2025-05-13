@@ -37,5 +37,4 @@ public class Income {
         return date;
      }
 
-
 }

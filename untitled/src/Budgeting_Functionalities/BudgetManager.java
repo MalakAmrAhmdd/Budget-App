@@ -11,23 +11,21 @@ public class BudgetManager {
         this.user = user;
     }
     public boolean addBudget(String category, float amount, String startDate, String endDate) {
-        double totalIncome = user.getTotalIncome(); // Assuming `getTotalIncome` exists in `User`
+        double totalIncome = user.getTotalIncome();
 
         if (amount > totalIncome) {
             System.out.println("Insufficient income to add this budget.");
             return false;
         }
-        // Add the budget to the user's budget list
-        List<Budget> budgets = user.getBudgets(); // Assuming `getBudgets` exists in `User`
+
+        List<Budget> budgets = user.getBudgets();
         int nextID = budgets.size() + 1;
         Budget budget = new Budget(nextID, category, amount, startDate, endDate);
         budgets.add(budget);
 
-        // Update the user data in the JSON file
         user.updateUserInFile();
 
-        System.out.println("Budget added successfully.");
+        System.out.println("Budget added successfully. Total income updated.");
         return true;
     }
-
 }

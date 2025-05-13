@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.File;
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -105,6 +106,9 @@ public class User {
         for (Income income : incomes) {
             total += income.getAmount();
         }
+        for(Budget budget : budgets){
+            total-= budget.getAmount();
+        }
         return total;
     }
     @JsonIgnore
@@ -147,10 +151,8 @@ public class User {
         }
 
         try {
-            // Read all users from the file
             List<User> users = new ArrayList<>(Arrays.asList(objectMapper.readValue(file, User[].class)));
 
-            // Find and update the current user
             for (int i = 0; i < users.size(); i++) {
                 if (users.get(i).getUserId() == this.userId) {
                     users.set(i, this);
@@ -164,4 +166,6 @@ public class User {
             e.printStackTrace();
         }
     }
+
 }
+
