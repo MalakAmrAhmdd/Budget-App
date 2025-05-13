@@ -5,13 +5,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.File;
 import java.io.IOException;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 public class User {
     private int userId;
@@ -24,13 +20,12 @@ public class User {
     private List<Income> incomes = new ArrayList<Income>();
     private int nextIncomeID = 0;
     private List<Expense> expenses = new ArrayList<Expense>();
-    private List<Goal> goals = new ArrayList<Goal>();
-    private List<Saving> savings = new ArrayList<Saving>();
+    private List<Saving_Goal> savingGoals = new ArrayList<Saving_Goal>();
     private List<Debt> debts = new ArrayList<Debt>();
+    private List<Budget> budgets = new ArrayList<Budget>();
 
     //Default constructor for Jackson
-    public User() {
-    }
+    public User() {}
 
     //parameterized constructor
     public User(int userId, String name, String email, String username, String password, String phoneNumber) {
@@ -75,6 +70,16 @@ public class User {
         return expenses;
     }
 
+    public List<Saving_Goal> getSavings() {
+        return savingGoals;
+    }
+    public List<Debt> getDebts() {
+        return debts;
+    }
+    public List<Budget> getBudgets() {
+        return budgets;
+    }
+
     public int getNextIncomeID() {
         return nextIncomeID;
     }
@@ -114,8 +119,8 @@ public class User {
     @JsonIgnore
     public float getTotalSavings() {
         float total = 0;
-        for (Saving saving : savings) {
-            total += saving.getTotalSavings();
+        for (Saving_Goal savingGoal : savingGoals) {
+            total += savingGoal.getTotalSavings();
         }
         return total;
     }

@@ -1,15 +1,15 @@
 package Budgeting_Functionalities;
 
 
-public class Saving {
+public class Saving_Goal {
     private int savingID;
     private float totalSavings;
 
 
     // Default constructor required for Jackson deserialization
-    public Saving() {
+    public Saving_Goal() {
     }
-    public Saving(int savingID, float totalSavings) {
+    public Saving_Goal(int savingID, float totalSavings) {
         this.savingID = savingID;
         this.totalSavings = totalSavings;
     }
