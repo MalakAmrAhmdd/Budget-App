@@ -9,6 +9,9 @@ import com.mailjet.client.resource.Emailv31;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+/**
+ * Represents a MailManager that sends emails for important notifications (OTP and reminders)
+ */
 public class MailManager {
     private String apiKey = "9385dd8f2e046880bd11631303c00151"; // Replace with your Mailjet API key
     private String apiSecret = "bfb13a2ecbb2434fbe296374fb43d42b"; // Replace with your Mailjet API secret

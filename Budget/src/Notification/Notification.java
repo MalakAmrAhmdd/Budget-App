@@ -5,6 +5,9 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Date;
 
+/**
+ * Represents a notification that has a specific ID, content and details for Date and Time sent
+ */
 public class Notification {
     private int notificationId;
     private String content;

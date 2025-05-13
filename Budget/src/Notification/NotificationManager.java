@@ -5,6 +5,9 @@ import User_Management.User;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
+/**
+ * Responsible for sending notifications
+ */
 public class NotificationManager
 {
     /**

@@ -2,7 +2,7 @@
 <module version="4">
   <component name="AdditionalModuleElements">
     <content url="file://$MODULE_DIR$" dumb="true">
-      <sourceFolder url="file://$MODULE_DIR$/untitled/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Budget/src" isTestSource="false" />
     </content>
   </component>
 </module>
