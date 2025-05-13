@@ -39,7 +39,6 @@ public class Main {
                     System.out.print("Enter phone number: ");
                     String phoneNumber = scanner.nextLine();
                     auth.signUp(name, email, username, password, phoneNumber);
-                    System.out.println("Sign-up successful!");
                     break;
 
                 case 2:

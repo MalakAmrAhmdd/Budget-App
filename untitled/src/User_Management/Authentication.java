@@ -5,6 +5,7 @@ import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 
 
 import java.io.*;
+import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -69,10 +70,27 @@ public class Authentication {
             return;
         }
 
+        OTPManager otpManager = new OTPManager();
+        otpManager.generateOTP(); // Generate OTP
+        otpManager.sendOTPViaEmail(email); // Send OTP to the user's email
+        System.out.println("An OTP has been sent to your email. Please enter it to complete the sign-up process.");
+        Scanner scanner = new Scanner(System.in);
+        do {
+            System.out.print("Enter the OTP: ");
+            String otp = scanner.nextLine();
+            if (otpManager.validateOTP(otp)) {
+                System.out.println("OTP validated successfully.");
+                break;
+            } else {
+                System.out.println("Invalid OTP. Please try again.");
+            }
+        }
+        while (true);
+
         int newUserId = users.size() + 1; // Generate a new user ID
         User newUser = new User(newUserId, name, email, username, password, phoneNumber);
-        users.put(username, newUser); // Add the user to the HashMap
-        saveUsers(); // Save the updated users to the file
+        users.put(username, newUser);
+        saveUsers();
         System.out.println("Sign-up successful!");
     }
 
