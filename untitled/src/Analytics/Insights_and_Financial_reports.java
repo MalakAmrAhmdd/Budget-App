@@ -9,14 +9,24 @@ import java.util.Map;
 import java.util.stream.Collectors;
 import java.time.LocalDate;
 
+/**
+ * Provides insights and generates financial reports for a user.
+ */
 public class Insights_and_Financial_reports {
 
     private final User user;
 
+    /**
+     * Constructs an Insights_and_Financial_reports instance for the specified user.
+     * @param user The user for whom the reports are generated.
+     */
     public Insights_and_Financial_reports(User user) {
         this.user = user;
     }
 
+    /**
+     * Generates and displays a comprehensive financial report for the user.
+     */
     public void generateFinancialReport() {
         System.out.println("\n--- Financial Report ---");
         displayIncomeSources();
@@ -25,6 +35,9 @@ public class Insights_and_Financial_reports {
         provideInsightsAndRecommendations();
     }
 
+    /**
+     * Displays the user's income sources and their totals.
+     */
     private void displayIncomeSources() {
         System.out.println("\nIncome Sources:");
         List<Income> incomes = user.getIncomes();
@@ -39,6 +52,9 @@ public class Insights_and_Financial_reports {
         }
     }
 
+    /**
+     * Displays the user's categorized spending.
+     */
     private void displayCategorizedSpending() {
         System.out.println("\nCategorized Spending:");
         List<Expense> expenses = user.getExpenses();
@@ -53,6 +69,9 @@ public class Insights_and_Financial_reports {
         }
     }
 
+    /**
+     * Displays the user's current debt status.
+     */
     private void displayDebtStatus() {
         System.out.println("\nDebt Status:");
         List<Debt> debts = user.getDebts();
@@ -73,6 +92,9 @@ public class Insights_and_Financial_reports {
         }
     }
 
+    /**
+     * Provides insights and recommendations based on the user's financial data.
+     */
     private void provideInsightsAndRecommendations() {
         System.out.println("\nInsights and Recommendations:");
         float totalIncome = 0;

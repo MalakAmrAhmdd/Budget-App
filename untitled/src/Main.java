@@ -8,7 +8,15 @@ import java.time.format.DateTimeParseException;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * Entry point for the Budget App.
+ * Provides a menu-driven interface for user interaction.
+ */
 public class Main {
+    /**
+     * Main method to run the Budget App.
+     * @param args Command-line arguments
+     */
     public static void main(String[] args) {
         Authentication auth = new Authentication();
         OTPManager otpManager = new OTPManager();
