@@ -55,6 +55,7 @@
     "startDate" : "2023-06-10",
     "endDate" : "20230-06-11"
   } ],
+  "reminders" : [ ],
   "saving_goals" : [ ],
   "debts" : [ ]
 }, {
@@ -98,6 +99,7 @@
     "startDate" : "2025-04-02",
     "endDate" : "2025-04-03"
   } ],
+  "reminders" : [ ],
   "saving_goals" : [ {
     "goalID" : 1,
     "name" : "hdom",
@@ -113,17 +115,4 @@
     "remainingAmount" : 200.0,
     "dueDate" : [ 2025, 4, 2 ]
   } ]
-}, {
-  "userId" : 3,
-  "name" : "Abdelrahman Yasser",
-  "email" : "abdelrahmanyr05@gmail.com",
-  "username" : "Pedro",
-  "password" : "6789067890",
-  "phoneNumber" : "01234567890",
-  "incomes" : [ ],
-  "nextIncomeID" : 0,
-  "expenses" : null,
-  "budgets" : [ ],
-  "saving_goals" : [ ],
-  "debts" : [ ]
 } ]

@@ -240,9 +240,28 @@ public class User {
      * Deletes the user's account.
      */
     public void deleteAccount() {
-        // Logic for deleting account
-    }
+        ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.registerModule(new com.fasterxml.jackson.datatype.jsr310.JavaTimeModule()); // Register JavaTimeModule
+        File file = new File("users.json");
+        if (!file.exists()) {
+            System.out.println("User file not found.");
+            return;
+        }
 
+        try {
+            // Read the list of users from the file
+            List<User> users = new ArrayList<>(Arrays.asList(objectMapper.readValue(file, User[].class)));
+
+            // Remove the user with the matching userId
+            users.removeIf(user -> user.getUserId() == this.userId);
+
+            // Write the updated list back to the file
+            objectMapper.writerWithDefaultPrettyPrinter().writeValue(file, users);
+            System.out.println("Account deleted successfully.");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
     /**
      * Updates the user's data in the users.json file.
      */
