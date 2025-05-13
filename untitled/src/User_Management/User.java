@@ -1,6 +1,5 @@
 package User_Management;
-import Budgeting_Functionalities.Expense;
-import Budgeting_Functionalities.Income;
+import Budgeting_Functionalities.*;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -24,10 +23,10 @@ public class User {
 
     private List<Income> incomes = new ArrayList<Income>();
     private int nextIncomeID = 0;
-//    private List<Expense> expenses;
-//    private List<Goal> goals;
-//    private List<Saving> savings;
-//    private List<Debt> debts;
+    private List<Expense> expenses = new ArrayList<Expense>();
+    private List<Goal> goals = new ArrayList<Goal>();
+    private List<Saving> savings = new ArrayList<Saving>();
+    private List<Debt> debts = new ArrayList<Debt>();
 
     //Default constructor for Jackson
     public User() {
@@ -73,14 +72,12 @@ public class User {
     }
 
     public List<Expense> getExpenses() {
-        return null;
+        return expenses;
     }
 
     public int getNextIncomeID() {
         return nextIncomeID;
     }
-
-
 
     //methods
 
@@ -105,17 +102,30 @@ public class User {
         }
         return total;
     }
-
+    @JsonIgnore
     public float getTotalDebt() {
-        return 0;
-    }
+        float total = 0;
+        for (Debt debt : debts) {
+            total += debt.getAmount();
+        }
+        return total;
 
+    }
+    @JsonIgnore
     public float getTotalSavings() {
-        return 0;
+        float total = 0;
+        for (Saving saving : savings) {
+            total += saving.getTotalSavings();
+        }
+        return total;
     }
-
+    @JsonIgnore
     public float getTotalExpenses() {
-        return 0;
+        float total = 0;
+        for (Expense expense : expenses) {
+            total += expense.getAmount();
+        }
+        return total;
     }
 
 
