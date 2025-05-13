@@ -1,9 +1,15 @@
 package User_Management;
 import Budgeting_Functionalities.Income;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
+import java.io.File;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+//import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 
 public class User {
     private int userId;
@@ -20,16 +26,50 @@ public class User {
 //    private List<Debt> debts;
     private int nextIncomeID;
 
-    public void addIncome(String source, float amount, LocalDate date) {
-        Income income = new Income(nextIncomeID++, source, amount, date);
-        incomes.add(income);
-        System.out.println("Added Income " + income + "to user " + username + ".");
-    }
+//    public void addIncome(String source, float amount, LocalDate date) {
+//        Income income = new Income(nextIncomeID++, source, amount, date);
+//        incomes.add(income);
+//        System.out.println("Added Income " + income + "to user " + username + ".");
+//    }
+public void addIncome(String source, float amount, LocalDate date) {
+    Income income = new Income(nextIncomeID++, source, amount, date);
+    incomes.add(income);
+    System.out.println("Added Income " + income + " to user " + username + ".");
+    updateUserInFile(); // Update the user in the JSON file
+}
+
+   private void updateUserInFile() {
+       ObjectMapper objectMapper = new ObjectMapper();
+//       objectMapper.registerModule(new com.fasterxml.jackson.datatype.jsr310.JavaTimeModule()); // Register JavaTimeModule
+       File file = new File("users.json");
+       if (!file.exists()) {
+           System.out.println("User file not found.");
+           return;
+       }
+
+       try {
+           // Read all users from the file
+           List<User> users = new ArrayList<>(Arrays.asList(objectMapper.readValue(file, User[].class)));
+
+           // Find and update the current user
+           for (int i = 0; i < users.size(); i++) {
+               if (users.get(i).getUserId() == this.userId) {
+                   users.set(i, this);
+                   break;
+               }
+           }
+
+           // Write the updated list back to the file
+           objectMapper.writerWithDefaultPrettyPrinter().writeValue(file, users);
+       } catch (IOException e) {
+           e.printStackTrace();
+       }
+   }
 
     public List<Income> getIncomes() {
         return incomes;
     }
-
+    @JsonIgnore
     public float getTotalIncome() {
         float total = 0;
         for (Income income : incomes) {
