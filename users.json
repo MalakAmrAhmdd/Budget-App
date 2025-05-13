@@ -28,9 +28,15 @@
   } ],
   "nextIncomeID" : 0,
   "expenses" : null,
-  "totalSavings" : 0.0,
-  "totalExpenses" : 0.0,
-  "totalDebt" : 0.0
+  "debts" : [ ],
+  "budgets" : [ {
+    "budgetID" : 1,
+    "category" : "Grocery",
+    "amount" : 600.0,
+    "startDate" : "2025-05-01",
+    "endDate" : "2025-05-30"
+  } ],
+  "savings" : [ ]
 }, {
   "userId" : 2,
   "name" : "Yassin el fekhem",
@@ -41,9 +47,9 @@
   "incomes" : [ ],
   "nextIncomeID" : 0,
   "expenses" : null,
-  "totalSavings" : 0.0,
-  "totalExpenses" : 0.0,
-  "totalDebt" : 0.0
+  "debts" : [ ],
+  "budgets" : [ ],
+  "savings" : [ ]
 }, {
   "userId" : 3,
   "name" : "Abdelrahman Yasser",
@@ -54,7 +60,7 @@
   "incomes" : [ ],
   "nextIncomeID" : 0,
   "expenses" : null,
-  "totalSavings" : 0.0,
-  "totalExpenses" : 0.0,
-  "totalDebt" : 0.0
+  "debts" : [ ],
+  "budgets" : [ ],
+  "savings" : [ ]
 } ]

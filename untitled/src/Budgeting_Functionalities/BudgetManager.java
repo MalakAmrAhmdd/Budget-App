@@ -17,7 +17,6 @@ public class BudgetManager {
             System.out.println("Insufficient income to add this budget.");
             return false;
         }
-
         // Add the budget to the user's budget list
         List<Budget> budgets = user.getBudgets(); // Assuming `getBudgets` exists in `User`
         int nextID = budgets.size() + 1;

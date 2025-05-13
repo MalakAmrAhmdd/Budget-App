@@ -1,3 +1,4 @@
+import Budgeting_Functionalities.BudgetManager;
 import Budgeting_Functionalities.Income;
 import Budgeting_Functionalities.IncomeManager;
 import User_Management.Authentication;
@@ -51,6 +52,7 @@ public class Main {
                         System.out.println("Welcome, " + Authentication.getCurrentUser().getUsername() + "!");
                         System.out.println("What do you want to do?");
                         System.out.println("1. Set & Track Income");
+                        System.out.println("2. Set Budget Categories");
                         String menuChoice = scanner.nextLine();
                         switch (menuChoice) {
                             case "1":
@@ -101,6 +103,36 @@ public class Main {
                                         System.out.println("Income added successfully!");
                                         break;
                                 }
+                                break;
+                            case "2":
+                                System.out.print("Enter category: ");
+                                String category = scanner.nextLine();
+
+                                System.out.print("Enter budget limit: ");
+                                float budgetLimit;
+                                try {
+                                    budgetLimit = Float.parseFloat(scanner.nextLine());
+                                } catch (NumberFormatException e) {
+                                    System.out.println("Invalid amount. Budget not added.");
+                                    break;
+                                }
+
+                                System.out.print("Enter start date (YYYY-MM-DD): ");
+                                String startDate = scanner.nextLine();
+
+                                System.out.print("Enter end date (YYYY-MM-DD): ");
+                                String endDate = scanner.nextLine();
+
+                                BudgetManager budgetManager = new BudgetManager(Authentication.getCurrentUser());
+                                boolean budgetAdded = budgetManager.addBudget(category, budgetLimit, startDate, endDate);
+
+                                if (budgetAdded) {
+                                    System.out.println("Budget added successfully.");
+                                } else {
+                                    System.out.println("Failed to add budget.");
+                                }
+                                break;
+
                         }
                     }
                     break;
