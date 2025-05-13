@@ -1,5 +1,6 @@
 package User_Management;
 import Budgeting_Functionalities.*;
+import Notification.*;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -32,6 +33,7 @@ public class User {
     @JsonProperty("debts")
     private List<Debt> debts = new ArrayList<Debt>();
     private List<Budget> budgets = new ArrayList<Budget>();
+    private List<Reminder> reminders = new ArrayList<Reminder>();
 
     /**
      * Default constructor for Jackson.
@@ -150,6 +152,14 @@ public class User {
      */
     public int getNextIncomeID() {
         return nextIncomeID;
+    }
+
+
+    /**
+     * Gets the list of reminders.
+     */
+    public List<Reminder> getReminders() {
+        return reminders;
     }
 
     /**
@@ -277,4 +287,13 @@ public class User {
     public void setSavingGoals(List<Saving_Goal> goals) {
         this.savingGoals = goals;
     }
+
+    /**
+     * Sets the list of reminders.
+     * @param reminders List of reminders
+     */
+    public void setReminders(List<Reminder> reminders) {
+        this.reminders = reminders;
+    }
+
 }
