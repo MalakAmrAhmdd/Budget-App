@@ -1,5 +1,6 @@
 package Analytics;
 
+import Budgeting_Functionalities.Expense;
 import Budgeting_Functionalities.Income;
 import User_Management.User;
 import java.util.List;
@@ -38,7 +39,7 @@ public class Insights_and_Financial_reports {
 
     private void displayCategorizedSpending() {
         System.out.println("\nCategorized Spending:");
-        List<Expense> expenses = user.getExpenses(); // Assuming `getExpenses` exists in `User`
+        List<Budgeting_Functionalities.Expense> expenses = user.getExpenses(); // Assuming `getExpenses` exists in `User`
         if (expenses.isEmpty()) {
             System.out.println("  No expense data available.");
         } else {

@@ -1,4 +1,5 @@
 package User_Management;
+import Budgeting_Functionalities.Expense;
 import Budgeting_Functionalities.Income;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -155,4 +156,12 @@ public void addIncome(String source, float amount, LocalDate date) {
     public void deleteAccount() {
         // Logic for deleting account
     }
+
+    public float getTotalExpenses() {}
+
+    public float getTotalSavings() {}
+
+    public int getTotalDebt() {}
+
+    public List<Expense> getExpenses() {}
 }
